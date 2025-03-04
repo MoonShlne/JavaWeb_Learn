@@ -1,2 +1,2 @@
 # JavaWeb_Learn
-As my javaweb practice repository
+As my javaWeb practice repository
