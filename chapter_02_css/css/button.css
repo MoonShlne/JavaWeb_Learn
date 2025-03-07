@@ -1,0 +1,10 @@
+input{
+    width: 200px ;
+    height: 110px ;
+    color: aqua;
+    background-color: darksalmon ;
+    border-radius: 10px ;
+    border: 2px burlywood inset ;
+    font-size: 30px  ;
+    font-family: fantasy ;
+}
