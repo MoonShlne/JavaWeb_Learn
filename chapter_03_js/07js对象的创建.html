@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        /*方法1 new object
+        方法二 {属性名:属性值 ,方法名:方法值}*/
+        /*       var Person = new Object();
+               Person.name = "piggy";
+               Person.age = 24;
+               Person.eat =  function (flower) {
+                   console.log(this.name + "喜欢吃" + flower);
+               };
+               Person.eat("康乃馨");
+               */
+        var Person = {
+            "name": "piggy",
+            "age": 24,
+            eat(flower) {
+                console.log(this.name + "喜欢吃" + flower);
+            }
+        }
+        Person.eat("杜鹃")
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
