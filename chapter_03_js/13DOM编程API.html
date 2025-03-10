@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--1 获得document dom树
+          window.document
+                   本程序通过button按钮触发get方法
+
+    2 从document中获取要操作的元素
+         1. 直接获取
+         直接get
+         2. 间接获取
+         通过父元素.children  /firstChildrenElement /last...
+         通过子元素.parentNode /firstParentElement /last...
+
+
+
+    3 对元素进行操作
+         1. 操作元素的属性
+         2. 操作元素的样式
+         3. 操作元素的文本
+         4. 增删元素-->
+
+
+    <style>
+        .div1{
+            color: #ae8a5b;
+        }
+
+    </style>
+
+    <script>
+        function getById() {
+            var element1 = window.document.getElementById("btn01");
+            console.log(element1);
+        }
+
+        function getByTag() {
+            var e = window.document.getElementsByTagName("input");
+            for (var i=0;i<e.length;i++){
+                console.log(e[i])
+            }
+        }
+
+        function getByName() {
+            var e = window.document.getElementsByName("aaa");
+            console.log(e);
+            for (var i=0;i<e.length;i++){
+                console.log(e[i])
+            }
+        }
+        function getByClass(){
+            var e= window.document.getElementsByClassName("div1")
+            for (var i=0;i<e.length;i++){
+                console.log(e[i])
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="dive1">
+    <input type="text" id="username" name="aaa"/>
+    <input type="text" id="password" name="aaa"/>
+    <input type="text" id="email" class="div1" />
+    <input type="text" id="address"/>
+</div>
+<input type="text"/><br>
+<input type="button" value="id" id="btn01" onclick="getById()"/>
+<input type="button" value="标签" id="btn02" onclick="getByTag()"/>
+<input type="button" value="name属性" id="btn03" onclick="getByName()"/>
+<input type="button" value="class类型" id="btn04" onclick="getByClass()"/>
+
+</body>
+</html>

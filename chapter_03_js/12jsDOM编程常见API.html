@@ -31,8 +31,29 @@
         }
 
         function  toHref(){
-            window.location.href="http://www.runoob.com"
+            window.location.href="https://www.runoob.com"
         }
+
+        function  SetStorage(){
+            window.localStorage.setItem("key1","value1")
+        }
+        function  RmStorage(){
+            window.localStorage.removeItem("key1","value1")
+        }
+        function  LogStorage() {
+            console.log(window.sessionStorage.getItem("key1"))
+        }
+
+        function  SetStorage1(){
+            window.sessionStorage.setItem("key1","value1")
+        }
+        function  RmStorage1(){
+            window.sessionStorage.removeItem("key1","value1")
+        }
+        function  LogStorage1() {
+            console.log(window.sessionStorage.getItem("key1"))
+        }
+
 
     </script>
 </head>
@@ -42,6 +63,14 @@
 <br>
 <hr>
 <input type="button" value="跳转到网页" onclick="toHref()">
+<hr>
+<input type="button" value="localstorage set" onclick="SetStorage()">
+<input type="button" value="localstorage remove" onclick="RmStorage()">
+<input type="button" value="localstorage log" onclick="LogStorage()">
+<hr>
+<input type="button" value="session storage set" onclick="SetStorage1()">
+<input type="button" value="session storage remove" onclick="RmStorage1()">
+<input type="button" value="session storage log" onclick="LogStorage1()">
 
 </body>
 </html>
