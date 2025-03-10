@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--鼠标时间
+    onclick ondbclick  onmouseover onmousemove  onmouseleave
+    键盘时间 onkeydown onkeyup
+
+    -->
+
+    <script>
+        function click1() {
+            // while (true) {
+            //     console.log("dan鸡了")
+            // }
+        }
+
+        function click2() {
+            console.log("dam鸡了22")
+        }
+
+        function click3() {
+            alert("双击了")
+        }
+
+        function mouseOver() {
+            console.log("鼠标悬停了")
+        }
+
+        function mouseLeave() {
+            console.log("鼠标离开了")
+        }
+
+        function mouseMove() {
+            console.log("鼠标移动了")
+        }
+
+        function onKeyDown() {
+            console.log("按下")
+        }
+
+        function onKeyUp() {
+            console.log("抬起")
+        }
+
+        function testFocus() {
+            console.log("focus on")
+        }
+
+        function Blur() {
+            console.log("focus out")
+        }
+
+        function testChange() {
+            console.log("表单change")
+        }
+
+        function testChange1(area) {
+            console.log("表单change到" + area);
+        }
+
+        function submitForm() {
+            var flag = confirm("确定提交吗")
+            if (!flag) {
+                return false;
+            }
+            return true;
+        }
+
+        function resetForm() {
+            alert("要清空咯")
+        }
+    </script>
+
+</head>
+<body>
+<h1>表单的事件test</h1>
+<form method="get" action="01js的引入方式.html" onreset="resetForm()" onsubmit="return submitForm()">
+    账号：<input type="text" name="账号" onfocus="testFocus()" onblur="Blur()" onchange="testChange()">
+    密码: <input type="password" name="密码">
+    <br>
+    注册：<input type="submit">
+    清空：<input type="reset">
+    <select name="归属地" onchange="testChange1(this.value)">
+        <option>舟山</option>
+        <option>舟地</option>
+        <option>舟海</option>
+    </select>
+
+</form>
+
+
+<br><br><br><br><br><br><br>
+<hr>
+
+<input type="button" value="好好好！" onclick="click1(),click2()" ondblclick="click3() ">
+<img src="img/picture.jpg" alt="图图" onmouseover="mouseOver()" onmouseleave="mouseLeave()" onmousemove="mouseMove()">
+<input type="text" onkeydown="onKeyDown()" onkeyup="onKeyUp()">
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        三种弹窗
+        alert   prompt  confirm
+        setTimeout(function(){},time)
+        history   back forward
+        location .href
+        sessionStorage 存储会话
+        localstorage
+
+        console
+        */
+
+
+
+        function TimeTest() {
+            window.setTimeout(function () {
+                alert("hello");
+            }, 3000)
+        }
+
+        function TimeTest2() {
+            window.setTimeout(() => {
+                alert("lambda")
+            }, 3000)
+        }
+
+        function  toHref(){
+            window.location.href="http://www.runoob.com"
+        }
+
+    </script>
+</head>
+<body>
+<input type="button" value="点我会弹框" onclick="TimeTest()">
+
+<br>
+<hr>
+<input type="button" value="跳转到网页" onclick="toHref()">
+
+</body>
+</html>
