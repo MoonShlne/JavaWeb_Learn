@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    创建元素 document.createElement -->
+    <!--    增加元素appendChild-->
+
+
+    <script>
+        function addCity() {
+            var city = document.getElementById("city");
+            var li1 = document.createElement("li");
+            li1.innerText = "长沙";
+            li1.id = "cs"
+            city.appendChild(li1)
+        }
+
+        function addCity1() {
+            var sh = document.getElementById("sh");
+            var li1 = document.createElement("li");
+            var city = document.getElementById("city");
+            li1.innerText = "澳门";
+            li1.id = "am"
+            city.insertBefore(li1, sh);
+        }
+
+        function addCity2() {
+            var sh = document.getElementById("sh");
+            var li1 = document.createElement("li");
+            var city = document.getElementById("city");
+            li1.innerText = "null";
+            li1.id = "am"
+            city.replaceChild(li1, sh);
+        }
+
+        function addCity3() {
+            var sh = document.getElementById("sh");
+            sh.remove();
+        }
+        function  clearElement(){
+        var city = document.getElementById("city");
+        // 删除ul ，但是就加不了新元素了
+        // city.remove();
+            while (city.firstChild!=null){
+                city.firstChild.remove();
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+<ul id="city">
+    <li id="bj">北京</li>
+    <li id="sh">上海</li>
+    <li id="gz">广州</li>
+    <li id="sz">深圳</li>
+
+
+</ul>
+<hr>
+<!--在末尾添加长沙-->
+<input type="button" value="长沙" onclick="addCity()">
+<!--在指定元素钱面添加澳门insertBefore-->
+<input type="button" value="澳门" onclick="addCity1()">
+<!--替换深圳 replace-->
+<input type="button" value="替换深圳" onclick="addCity2()">
+<!--删除元素 remove-->
+<input type="button" value="删除上海" onclick="addCity3()">
+<!--清空元素  clear city-->
+<input type="button" value="删除" onclick="clearElement()">
+
+
+</body>
+</html>
