@@ -7,7 +7,7 @@
         .background {
             width: 100%;
             height: 100vh;
-            background-image: url('img/img2.jpg');
+            background-image: url('static/img/img2.jpg');
 
 
             background-size: cover;
@@ -104,6 +104,8 @@
         }
 
     </script>
+    <link rel="stylesheet" href="static/css/btn.css">
+    <script src="static/js/but.js"></script>
 </head>
 <body>
 <div class="background">
@@ -113,7 +115,7 @@
         </div>
         <hr>
         <div id="log_sys">
-            <form method="post" action="logIn.html" onsubmit="return checkForm()">
+            <form method="post" action="" onsubmit="return checkForm()">
                 <div class="count">
                     账号： <input type="text" class="box_style" id="count" onblur="checkUsername()" placeholder="请输入5-10位字母&&数字的字符">
                     <br>
