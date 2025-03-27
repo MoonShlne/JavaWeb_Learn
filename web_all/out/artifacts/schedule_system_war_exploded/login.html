@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <style>
+        .background {
+            width: 100%;
+            height: 100vh;
+            background-image: url('static/img/img2.jpg');
+
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            width: 520px;
+            height: 600px;
+            background-color: #ffffff;
+            position: relative;
+            left: 400px;
+            padding: 50px; /* 设置内边距 */
+            box-sizing: border-box; /* 包含内边距和边框在内 */
+        }
+
+        .head {
+            text-align: center;
+        }
+
+        .border {
+            line-height: 1.5;
+            font-size: 30px;
+
+
+        }
+        .count{
+            font-size: 26px;
+        }
+        .box_style{
+            height: 35px;
+            width: 300px;
+        }
+        .button_div{
+            height: 60px;
+            width: 100%;
+            position: relative;
+            left: 80px;
+
+        }
+        .button{
+            height: 50px;
+            width: 85px;
+            margin-right: 70px;
+        }
+        .foot{
+        text-align: center;
+        }
+        .span_box{
+            font-size: 13px;
+            color: red;
+        }
+
+    </style>
+
+    <script>
+        function  checkUsername(){
+            var UsernameReg = /^[a-zA-Z0-9]{5,10}$/
+            var count=  document.getElementById("count").value;
+            var warn_module = document.getElementById("warn_count");
+            if (!UsernameReg.test(count)){
+            warn_module.innerText="输入有误，请重试";
+            return false;
+            }
+            else {
+                warn_module.innerText="";
+                return true;
+            }
+
+
+        }
+
+        function checkPassword(){
+            var UsernameReg = /^[0-9]{6}$/
+            var pass=  document.getElementById("password").value;
+            var warn_module = document.getElementById("warn_pass");
+            if (!UsernameReg.test(pass)){
+                warn_module.innerText="输入有误，请重试";
+                return false;
+            }
+            else {
+                warn_module.innerText="";
+                return true;
+            }
+        }
+        function checkForm() {
+           var flag1 = checkUsername();
+           var  flag2 = checkPassword();
+            return flag1 && flag2;
+
+        }
+
+    </script>
+    <link rel="stylesheet" href="static/css/btn.css">
+    <script src="static/js/but.js"></script>
+</head>
+<body>
+<div class="background">
+    <div class="login-container">
+        <div class="head">
+            <span class="border">账号密码登录</span>
+        </div>
+        <hr>
+        <div id="log_sys">
+            <form method="post" action="" onsubmit="return checkForm()">
+                <div class="count">
+                    账号： <input type="text" class="box_style" id="count" onblur="checkUsername()" placeholder="请输入5-10位字母&&数字的字符">
+                    <br>
+                    <span id="warn_count" class="span_box"></span>
+
+                </div>
+                <br>
+                <div class="count">
+                    密码： <input type="password" class="box_style"  id="password" onblur="checkPassword() " placeholder="请输入6位数字的密码">
+                    <br>
+                    <span id="warn_pass" class="span_box"> </span>
+                </div>
+                <br>
+                <div class="button_div">
+                    <input type="submit"  class="button" value="登录">
+                    <input type="reset" class="button"  value="重置">
+                </div>
+
+
+            </form>
+            <div id="foot" class="foot">
+                <hr>
+                <a href="register.html" >还没有账号？！去注册</a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
