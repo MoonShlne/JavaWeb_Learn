@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function getMessage() {
+            //实例化一个xmlHTTPRequest对象
+            var request = new XMLHttpRequest();
+
+
+            //设置回调函数
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    console.log(request.responseText);
+
+                }
+
+            }
+
+            //设置发送方式和资源位置
+            request.open("get", "/hello?username=piggy")
+
+            //发送请求
+            request.send()
+
+        }
+    </script>
+
+</head>
+<body>
+
+<button onclick="getMessage()">按钮</button>
+
+</body>
+</html>

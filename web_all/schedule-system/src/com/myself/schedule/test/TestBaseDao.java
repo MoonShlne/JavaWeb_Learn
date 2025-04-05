@@ -1,6 +1,7 @@
 package com.myself.schedule.test;
 
 import com.myself.schedule.Dao.BaseDao;
+import com.myself.schedule.Dao.impl.SysUserDaoImpl;
 import com.myself.schedule.pojo.SysUser;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,6 +40,13 @@ public class TestBaseDao {
         String sql ="insert into sys_schedule values(DEFAULT,?,?,?)";
         int rows = baseDao.baseUpdate(sql, 1, "不学JDBC", 0);
         System.out.println(rows);
+
+    }
+    @Test
+    public void testUserImpl(){
+        SysUserDaoImpl sysUserDao = new SysUserDaoImpl();
+        List<SysUser> all = sysUserDao.findAll();
+        all.forEach(System.out::println);
 
     }
 }

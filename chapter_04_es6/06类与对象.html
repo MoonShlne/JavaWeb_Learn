@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+    class Person {
+        #name;
+        #age;
+
+        constructor(name, age) {
+            this.#name = name;
+            this.#age = age;
+        }
+
+
+        get name() {
+            return this.#name;
+        }
+
+        set name(value) {
+            this.#name = value;
+        }
+
+        get age() {
+            return this.#age;
+        }
+
+        set age(value) {
+            this.#age = value;
+        }
+        eat (){
+            console.log(`${this.age}岁的${this.name}在吃小鱼干`)
+        }
+    }
+
+    let person = new Person("piggy",13);
+    person.eat();
+
+
+
+</script>
+
+
+</body>
+</html>

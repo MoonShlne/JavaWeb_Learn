@@ -1,7 +1,6 @@
 package com.myself.schedule.service;
 
 import com.myself.schedule.pojo.SysUser;
-import com.myself.schedule.service.impl.SysUserServiceImpl;
 
 /**
  * @author polar
@@ -15,4 +14,8 @@ public interface SysUserService {
      * @return   返回布尔类型，成功为true
      */
     int register(SysUser sysUser);
+
+    boolean findUserName(SysUser sysUser);
+
+    boolean findPassword(SysUser sysUser);
 }

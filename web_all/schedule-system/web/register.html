@@ -86,11 +86,36 @@
             if (!UsernameReg.test(count)) {
                 warn_module.innerText = "输入有误，请重试";
                 return false;
-            } else {
-                warn_module.innerText = "";
-                return true;
             }
 
+            //ajax
+            var request = new XMLHttpRequest();
+
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+                    var result = JSON.parse(request.responseText);
+                    if (result.code !== 200){
+                        warn_module.innerText = "用户名不可用！"
+                        return false;
+                    }
+                    else {
+                        warn_module.innerText = "用户名可用！"
+                        return true;
+                    }
+
+                    // if (request.responseText == "notFind"){
+                    //     warn_module.innerText = "用户名可用！"
+                    //     return true;
+                    // }
+                    // else {
+                    //     warn_module.innerText = "用户名已被占用！"
+                    //     return  false;
+                    // }
+                }
+            }
+
+            request.open("GET", "/user/checkUsernameUsed?username=" + count)
+            request.send()
 
         }
 
@@ -142,7 +167,8 @@
         <div id="log_sys">
             <form method="post" action="/user/register" onsubmit="return checkForm()">
                 <div class="count">
-                    &emsp;&emsp;账号： <input type="text" class="box_style" id="count" name="userName" onblur="checkUsername()"
+                    &emsp;&emsp;账号： <input type="text" class="box_style" id="count" name="userName"
+                                             onblur="checkUsername()"
                                              placeholder="请输入5-10位字母&&数字的字符">
                     <br>
                     <span id="warn_count" class="span_box"></span>
@@ -150,7 +176,8 @@
                 </div>
                 <br>
                 <div class="count">
-                    &emsp;&emsp;密码： <input type="password" class="box_style" id="password" name="userPassword" onblur="checkPassword() "
+                    &emsp;&emsp;密码： <input type="password" class="box_style" id="password" name="userPassword"
+                                             onblur="checkPassword() "
                                              placeholder="请输入6位数字的密码">
                     <br>
                     <span id="warn_pass" class="span_box"> </span>

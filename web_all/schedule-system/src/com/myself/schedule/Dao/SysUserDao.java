@@ -1,6 +1,9 @@
 package com.myself.schedule.Dao;
 
+import com.myself.schedule.pojo.SysSchedule;
 import com.myself.schedule.pojo.SysUser;
+
+import java.util.List;
 
 /**
  * @author polar
@@ -9,4 +12,10 @@ import com.myself.schedule.pojo.SysUser;
  */
 public interface SysUserDao {
     int addSysUser(SysUser sysUser);
+
+    boolean findName(SysUser sysUser);
+
+    boolean findPassword(SysUser sysUser);
+
+    List<SysUser> findAll();
 }

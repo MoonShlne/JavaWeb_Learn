@@ -5,6 +5,8 @@ import com.myself.schedule.pojo.SysUser;
 import com.myself.schedule.service.SysUserService;
 import com.myself.schedule.util.MD5Util;
 
+import java.util.List;
+
 /**
  * @author polar
  * @version 1.0
@@ -21,5 +23,21 @@ public class SysUserServiceImpl  implements SysUserService {
         //调用DAO  将信息存入数据库
 
       return UserDao.addSysUser(sysUser);
+    }
+
+    @Override
+    public boolean findUserName(SysUser sysUser) {
+
+        return UserDao.findName(sysUser);
+
+    }
+
+    @Override
+    public boolean findPassword(SysUser sysUser) {
+        //将密码转换为密文
+        sysUser.setPassword(MD5Util.encrypt(sysUser.getPassword()));
+
+
+        return UserDao.findPassword(sysUser);
     }
 }
