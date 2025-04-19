@@ -22,4 +22,12 @@ public interface SysScheduleDao {
      * @return 返回一个list对象集合
      */
     List<SysSchedule> findAll();
+
+    List<SysSchedule> finItemListByUid( int uid);
+
+    void addNewSchedule(Integer uid);
+
+    void saveChange(SysSchedule sysSchedule);
+
+    void dropSchedule(SysSchedule sysSchedule);
 }

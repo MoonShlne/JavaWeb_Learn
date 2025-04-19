@@ -18,4 +18,7 @@ public interface SysUserDao {
     boolean findPassword(SysUser sysUser);
 
     List<SysUser> findAll();
+
+
+    SysUser findUser(SysUser sysUser);
 }

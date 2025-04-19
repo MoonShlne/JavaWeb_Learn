@@ -1,11 +1,9 @@
 package com.myself.schedule.service.impl;
-
 import com.myself.schedule.Dao.impl.SysUserDaoImpl;
 import com.myself.schedule.pojo.SysUser;
 import com.myself.schedule.service.SysUserService;
 import com.myself.schedule.util.MD5Util;
 
-import java.util.List;
 
 /**
  * @author polar
@@ -39,5 +37,10 @@ public class SysUserServiceImpl  implements SysUserService {
 
 
         return UserDao.findPassword(sysUser);
+    }
+
+    @Override
+    public SysUser findUser(SysUser sysUser) {
+        return  UserDao.findUser(sysUser);
     }
 }

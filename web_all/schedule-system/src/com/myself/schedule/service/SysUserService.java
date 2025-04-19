@@ -18,4 +18,7 @@ public interface SysUserService {
     boolean findUserName(SysUser sysUser);
 
     boolean findPassword(SysUser sysUser);
+
+
+    SysUser findUser(SysUser sysUser);
 }

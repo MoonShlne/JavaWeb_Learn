@@ -14,7 +14,7 @@ import java.io.IOException;
  * @version 1.0
  * @since 2025/3/30 15:43
  */
-@WebFilter(urlPatterns = {"/showSchedule.html","/schedule/*"})
+//@WebFilter(urlPatterns = {"/showSchedule.html","/schedule/*"})
 public class LoginFilter implements Filter {
 
     @Override

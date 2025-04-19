@@ -86,6 +86,12 @@ tomcat_project/              -- Web 项目的根目录（上下文根）
 
 
 
+第二次乱码
+
+只要properties的最后一个编码 跟 consol的编码一致就不会乱码
+
+如果tomcat catalina log  和tomcat localhost log 乱码 ，就把property 的前两个改GBk
+
 
 
 #### 路径问题

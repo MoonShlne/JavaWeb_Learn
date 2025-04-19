@@ -1,6 +1,5 @@
 package com.myself.schedule.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myself.schedule.common.Result;
 import com.myself.schedule.common.ResultCodeEnum;
 import com.myself.schedule.pojo.SysUser;
@@ -10,9 +9,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * @author polar
@@ -33,47 +32,58 @@ public class SysUserController extends BaseController {
      */
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1 接受参数
-        String userName = req.getParameter("userName");
-        String userPassword = req.getParameter("userPassword");
-        //2 调用服务层方法
-        SysUser sysUser = new SysUser(null, userName, userPassword);
-        int flag = userService.register(sysUser);
-        if (flag > 0) {
-            resp.sendRedirect("/registSuccess.html");
+//        String userName = req.getParameter("userName");
+//        String userPassword = req.getParameter("userPassword");
 
-        } else {
-            resp.sendRedirect("/registFail.html");
+        SysUser sysUser = WebUtil.readJson(req, SysUser.class);
+        //2 调用服务层方法
+        int rows = userService.register(sysUser);
+
+        Result result = Result.ok(null);
+
+        if (rows < 1) {
+            result = Result.build(null, ResultCodeEnum.USERNAME_USED);
         }
+        WebUtil.writeJson(resp, result);
 
 
     }
 
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1 接受参数
-        String userName = req.getParameter("userName");
-        String userPassword = req.getParameter("userPassword");
-
+        SysUser sysUser = WebUtil.readJson(req, SysUser.class);
         //2 调用方法
-        SysUser sysUser = new SysUser(null, userName, userPassword);
         boolean flagUserName = userService.findUserName(sysUser);
-
+        Result<Object> result = Result.ok(null);
 
         if (flagUserName) {
+            //如果找到了name
             boolean flagPassword = userService.findPassword(sysUser);
             if (!flagPassword) {
-                resp.sendRedirect("/loginUserPwdError.html");
+                //没找到密码
+                result= Result.build(null, ResultCodeEnum.PASSWORD_ERROR);
             } else {
+                //账号密码正确，将属性传到前端作为路由守卫的条件
+                SysUser loginUser = userService.findUser(sysUser);
+                HashMap<Object, Object> data= new HashMap<>();
+                loginUser.setPassword("");
+                data.put("loginUser",loginUser);
+                result= Result.ok(data);
+                //密码正确
                 //将登陆的信息放入session域
-                HttpSession session = req.getSession();
-                session.setAttribute("sysUser", sysUser);
+//                HttpSession session = req.getSession();
+//                session.setAttribute("sysUser", sysUser);
 
-                resp.sendRedirect("/showSchedule.html");
             }
         } else {
-            resp.sendRedirect("/loginUserNameError.html");
+            //没找到name
+            result=  Result.build(null, ResultCodeEnum.USERNAME_ERROR);
         }
 
-    }
+        WebUtil.writeJson(resp,result);
+
+
+     }
 
     /**
      * 再注册时，检验用户名是否被占用

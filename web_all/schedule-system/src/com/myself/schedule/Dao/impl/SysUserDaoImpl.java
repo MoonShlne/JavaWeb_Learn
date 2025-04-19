@@ -6,6 +6,7 @@ import com.myself.schedule.Dao.SysUserDao;
 import com.myself.schedule.pojo.SysSchedule;
 import com.myself.schedule.pojo.SysUser;
 import com.myself.schedule.util.JDBCUtil;
+import com.myself.schedule.util.MD5Util;
 
 import java.sql.Connection;
 import java.util.List;
@@ -29,13 +30,11 @@ public class SysUserDaoImpl implements SysUserDao {
     public boolean findName(SysUser sysUser) {
         String sql = "SELECT uid , username ,user_pwd as password FROM sys_user WHERE username = ?";
         List<Object> objects = baseDao.baseQuery(SysUser.class, sql, sysUser.getUsername());
-        if (objects.isEmpty()){
+        if (objects.isEmpty()) {
             return false;
-        }
-        else if (objects.size() == 1 ){
+        } else if (objects.size() == 1) {
             return true;
-        }
-        else {
+        } else {
             throw new RuntimeException("数据库用户名重复");
         }
 
@@ -44,14 +43,12 @@ public class SysUserDaoImpl implements SysUserDao {
     @Override
     public boolean findPassword(SysUser sysUser) {
         String sql = "SELECT uid , username ,user_pwd as password  FROM sys_user WHERE username =? AND user_pwd = ?  ";
-        List<Object> objects = baseDao.baseQuery(SysUser.class, sql,sysUser.getUsername(), sysUser.getPassword());
-        if (objects.isEmpty()){
+        List<Object> objects = baseDao.baseQuery(SysUser.class, sql, sysUser.getUsername(), sysUser.getPassword());
+        if (objects.isEmpty()) {
             return false;
-        }
-        else if (objects.size() ==1 ){
+        } else if (objects.size() == 1) {
             return true;
-        }
-        else {
+        } else {
             throw new RuntimeException("数据库用户名重复");
         }
 
@@ -59,9 +56,15 @@ public class SysUserDaoImpl implements SysUserDao {
 
     @Override
     public List<SysUser> findAll() {
-            String sql ="SELECT * from sys_user";
-            return baseDao.baseQuery(SysUser.class,sql,null);
-
+        String sql = "SELECT * from sys_user";
+        return baseDao.baseQuery(SysUser.class, sql, null);
     }
 
+    @Override
+    public SysUser findUser(SysUser sysUser) {
+        String sql = "SELECT uid , username ,user_pwd as password  FROM sys_user WHERE username =? AND user_pwd = ?  ";
+        List<Object> objects = baseDao.baseQuery(SysUser.class, sql, sysUser.getUsername(), sysUser.getPassword());
+        return (SysUser) objects.get(0);
+
+    }
 }

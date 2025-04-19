@@ -13,13 +13,6 @@
     <router-link to="/add">add</router-link>
     <br>
 
-    <hr>
-    <router-view name="HomeView"></router-view>
-    <hr>
-    <router-view name = "ListView"></router-view>
-    <hr>
-    <router-view name = "AddView" ></router-view>
-    <hr>
     <router-view></router-view>
     <hr>
 

@@ -11,10 +11,10 @@ const router = createRouter(
         routes: [
             {
                 path: "/home",
-                component: {HomeView:Home}
+                component: Home
             }, {
                 path: "/list",
-                component: {ListView:List}
+                component: List
             }, {
                 path: "/Add",
                 component: Add
@@ -22,13 +22,29 @@ const router = createRouter(
                 path: "/",
                 component: Home
             }
-            , {path: "/haha",
-                redirect: "/List"}
+            , {
+                path: "/haha",
+                redirect: "/List"
+            }
 
 
         ]
     }
 );
 
+//设置全局前置守卫
+router.beforeEach((to, from, next) => {
+    console.log("beforeEach");
+    console.log(from.path);
+    console.log(to.path);
+    next();
+
+
+})
+
+//全局后置首位
+router.afterEach(() => {
+    console.log("afterEach");
+})
 
 export default router;
